@@ -1,0 +1,57 @@
+version: '3.4'
+
+services:
+
+  game:
+    container_name: game
+    image: ${DOCKER_REGISTRY-}game
+    build:
+      context: .
+      dockerfile: game/Dockerfile
+
+  word:
+    container_name: word
+    image: ${DOCKER_REGISTRY-}word
+    build:
+      context: .
+      dockerfile: word/Dockerfile
+
+  player1:
+    container_name: player1
+    image: ${DOCKER_REGISTRY-}player1
+    build:
+      context: .
+      dockerfile: player/Dockerfile
+    depends_on:
+      - "game"
+      - "word"
+
+  player2:
+    container_name: player2
+    image: ${DOCKER_REGISTRY-}player2
+    build:
+      context: .
+      dockerfile: player/Dockerfile
+    depends_on:
+      - "game"
+      - "word"
+
+  player3:
+    container_name: player3
+    image: ${DOCKER_REGISTRY-}player3
+    build:
+      context: .
+      dockerfile: player/Dockerfile
+    depends_on:
+      - "game"
+      - "word"
+
+  player4:
+    container_name: player4
+    image: ${DOCKER_REGISTRY-}player4
+    build:
+      context: .
+      dockerfile: player/Dockerfile
+    depends_on:
+      - "game"
+      - "word"

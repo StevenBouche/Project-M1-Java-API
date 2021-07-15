@@ -1,0 +1,109 @@
+SCORE TEST : 
+public Score setScorePlayer(ChoicePlayer choice){
+ 
+String word = choice.getWord(); //récupérer le mot placé
+ 
+   int size = word.length(); //calculer sa longueur
+   int scoreWord = 0; //score du mot initié à 0
+   int multiplicatorWord = 1; //multiplcateur à initié à 0
+   int scorePlayer = 0; //score du joueur initié à 0
+   char a = 'a'; //stocker la lettre a pour créer notre index
+ 
+   int dirX = choice.getDirX();
+   int dirY = choice.getDirY();
+   int posX = choice.getStartX();
+   int posY = choice.getStartY();
+ 
+//CAS 1 : aucune lettre/mot posé :
+ 
+       if(word == null || size ==0){
+       scorePlayer = scorePlayer + 0
+       }
+ 
+//CAS 2 : mot posé horizontalement
+ 
+   int startCase = [7][7]; //position de la première case
+   //getStartCase()
+   int endCase = [7][11]; //position de la dernière case
+   //getEndCase()
+ 
+       if(dirX==1 && dirY==0){ //mot horizontalement
+ 
+       for (int i = 0; i < size; i++) {
+           //charAt trouve la position et conversion en char
+           char currentLetter = word.charAt(i);
+           int indexCurrentLetter = currentLetter - a;
+           int scoreLetter = points[indexCurrentLetter];
+ 
+           if (
+           this.cases[posY][posX] ="LD"){ //si la currentLetter tombe sur une case bonus LD on double le score de la lettre
+               scoreLetter = scoreLetter * 2;
+           }
+           if (
+           this.cases[posY][posX] ="LT"){ //si la currentLetter tombe sur une case bonus LT on triple le score de la lettre
+               scoreLetter = scoreLetter * 3;
+           }
+           if (
+           this.cases[posY][posX] ="MD"){ //si la currentLetter tombe sur une case bonus MD on multiplie la valeur du multiplicateur par 2
+               multiplicatorWord = multiplicatorWord * 2;
+           }
+           if (
+           this.cases[posY][posX] ="MT"){ //si la currentLetter tombe sur une case bonus MT on multiplie la valeur du multiplicateur par 3
+               multiplicatorWord = multiplicatorWord * 3;
+           }
+           else(
+           this.cases[posY][posX] =" "){ //si la currentLetter ne tombe pas sur de case bonus
+               scoreLetter = scoreLetter;
+               multiplicatorWord = multiplicatorWord * 1;
+           }
+ 
+           scoreWord += scoreLetter;
+       }
+// SI LE MOT EST ATTACHE A UN AUTRE MOT ON FAIT GETSCORE DESSUS ET ON ADDITIONNE LES DEUX
+       scorePlayer = scoreWord * multiplicatorWord;
+   }
+ 
+//CAS 3 : mot posé verticalement
+ 
+       if(dirX==0 && dirY==1){ //mot verticalement
+ 
+       for (int j = 0; j < size; j++) {
+           //charAt trouve la position et conversion en char
+           char currentLetter = word.charAt(j);
+           int indexCurrentLetter = currentLetter - a;
+           int scoreLetter = points[indexCurrentLetter];
+ 
+           if (
+           this.cases[posY][posX] ="LD"){
+               scoreLetter = scoreLetter * 2;
+           }
+           if (
+           this.cases[posY][posX] ="LT"){
+               scoreLetter = scoreLetter * 3;
+           }
+           if (
+           this.cases[posY][posX] ="MD"){
+               multiplicatorWord = multiplicatorWord * 2;
+           }
+           if (
+           this.cases[posY][posX] ="MT"){
+               multiplicatorWord = multiplicatorWord * 3;
+           }
+           else(
+           this.cases[posY][posX] =" "){
+               scoreLetter = scoreLetter;
+               multiplicatorWord = multiplicatorWord * 1;
+           }
+ 
+           scoreWord += scoreLetter;
+       }
+       scorePlayer = scoreWord * multiplicatorWord;
+   }
+ 
+//ATTENTION : RÉFLÉCHIR POUR LES CAS OÙ LE JOUEUR REMPLIT DEUX MOTS EN MÊME TEMPS !
+//+ FAIRE LES TESTS
+ 
+//IL FAUT AU FUR ET À MESURE ADDITIONNER LES SCORES DU JOUEUR
+//finalScore += scorePLayer
+ 
+}
